@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-def list_all(mongo_collection):
+def list_all(mongo_collection) -> list:
     """
     List all documents in a MongoDB collection.
 
@@ -9,5 +9,10 @@ def list_all(mongo_collection):
     :return: A list of all document is in the
     collection or an empty list if the collection is empty.
     """
-    documents = list(mongo_collection.find())
-    return documents if documents else []
+
+    documents: list = []
+
+    for document in mongo_collection.find():
+        documents.append(document)
+
+    return documents
